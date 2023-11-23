@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+#navbar{
+    width: 100%;
+    height: 8vh;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+#navbar div{
+    margin: 7px 10px 7px 10px;
+    text-align: center;
+    display: flex;
+}
+#navbar div #searchBox{
+    width: 400px;
+    height: 95%;
+    border: none;
+    border-radius: 10px;
+    background-color: grey;
+}
+#bell{
+    height: 100%;
+    background-color: grey;
+    border: none;
+    border-radius: 10px;
+}
+#nameSection{
+    width: 150px;
+    height: 100%;
+    border-radius: 10px;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+}
+#smallSection{
+    width: 20%;
+    background-color: green;
+    height: 90%;
+    border: 0 0 10px 0;
+}
+#rightNav{
+    justify-content: space-between;
+    width: 190px;
+}
