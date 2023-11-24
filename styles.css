@@ -83,8 +83,10 @@ nav > a {
 }
 .alerts {
     position: absolute;
-    display: flex;
-    flex-direction: column;
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     top: 60px;
     right: 0;
     padding: 16px;
@@ -92,10 +94,9 @@ nav > a {
     background-color: #fff;
     border-radius: 8px;
     border: 1px solid #dbdbdb;
-    opacity: 0;
-    transition: opacity .5s ease;
+    transition: display .5s ease;
 }
-.alerts .alertsTop {
+.alertsTop {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -146,8 +147,8 @@ nav > a {
     border: 1px solid #dbdbdb;
     border-radius: 14px;
     padding: 6px;
-    opacity: 0;
-    transition: opacity .5s ease;
+    display: none;
+    transition: display .5s ease;
 }
 .userDropdown .username {
     display: flex;
@@ -206,8 +207,9 @@ nav > a {
     background-color: transparent;
     border: 2px solid #005BD3;
 }
-.userDropdown li a {
-    text-decoration: none;
+.userDropdown a{text-decoration: none;
+}
+.userDropdown a li {
     color: #303030;
     font-size: 13px;
 }
