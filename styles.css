@@ -4,11 +4,14 @@
     padding: 0;
 }
 body {
-    background-color: #F1F1F1;
+    background-color: #E1E1E1;
     font-family: 'inter', sans-serif;
+    /* overflow-x: hidden; */
 }
 nav {
-    width: 100vw;
+    /* So I had to comment this width cuz it keeps bringing making the page a bit scrollable, the error is probably from something I did but I can't find it */
+    /* width: 100vw; */
+    width: 100%;
     background-color: #1A1A1A;
     display: flex;
     align-items: center;
@@ -222,11 +225,10 @@ nav > a {
 }
 main{
     width: 100% ;
-    height: 500px;
-    margin: 30px;
-    display: flex;
+    /* height: 500px; */
+    margin: 30px 0 0 0;
 }
-header{
+#mainHeading{
     width: 832px;
     height: 58px;
     background-color: #1A1A1A;
@@ -237,19 +239,19 @@ header{
     border-radius: 10px;
 }
 .leftTitle{
-    margin: 20px 0 0 10px;
-    width: 80%;
-}
-.rightBtnSection{
-    width: 20%;
     display: flex;
+    margin: 20px 0 0 10px;
+    width: 95%;
     justify-content: space-between;
+}
+.rightcancelSign{
+    width: 5%;
 }
 #selectAPlanBtn{
     height: 36px;
-    width: 70%;
+    width: 100px;
+    margin: -10px 0 0 0;
     border-radius: 8px;
-    margin: 11px 0 0 0;
     font-weight: bolder;
     border: none;
 }
@@ -261,9 +263,89 @@ header{
 } 
 #cancelSign{
     font-size:30px;
-    margin: 13px 20px 0 0;
+    margin: 10px 0 0 10px;
 }
-
+#topOfMainBody{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+#mainBody{
+    width:832px;
+    /* height: 300px; */
+    background-color:white;
+    margin: 10px 0 0 230px;
+    border-radius: 30px;
+}
+.setupGuild{
+    margin: 22px 0 0 15px;
+}
+.setupGuild span{
+    margin: 10px 0 0 0;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+}
+.progressBar{
+    height: 6px;
+    width: 80px;
+    margin: 8px 0 0 0;
+    border-radius: 5px;
+    background-color: black;
+}
+.collapseIcon{
+    margin:20px 20px 0 0 ;
+    height: 40px;
+}
+.collapseIcon img{
+    width: 50px;
+    height: 100%;
+}
+section{
+    display: flex;
+    width: 98%;
+    height: 180px;
+    border-radius: 15px;
+    margin: 10px 0 30px 10px;
+    background-color: #dbdbdb;
+}
+.topOfLeft b{
+    margin: 8px 0 0 5px;
+}
+.topOfLeft{
+    display: flex;
+    margin: 10px 0 0 10px;
+}
+.leftOfSection{
+    width: 80%;
+}
+.leftOfSection p , .bottomOfSection{
+    margin: 20px 0 0 50px;
+}
+.leftOfSection p a{
+    text-decoration: none;
+    color: #005BD3;
+    font-weight: bold;
+}
+.bottomOfSection{
+    display: flex;
+    justify-content: space-between;
+    width: 240px;
+}
+.bottomOfSection button{
+    width: 100px;
+    height: 35px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    border: none;
+}
+.bottomOfSection b{
+    margin: 5px 0 0 0;
+}
+.rightOfSection{
+    margin:20px 0 0 0 ;
+}
 
 /**  RESPONSIVENESS  **/
 
@@ -288,5 +370,53 @@ header{
     } 
     .user small {
         pad: 9px 5px 10px 5px;
+    }
+    nav{
+        width: 100%;
+    }
+    main, #mainHeading, #mainBody{
+        width: 100%;
+    }
+
+    main{
+    }
+    #mainHeading{
+        height: 110px;
+        border-radius: 0;
+    }
+    section{
+        margin: 30px 0 0 0;
+        display: flex;
+        border-radius: 0;
+        width: 100%;
+    }
+    .rightOfSection{
+        display: none;
+    }
+    .leftOfSection{
+        width: 100%;
+    }
+    .leftOfSection p{
+        margin: 10px 20px 0 20px;
+    }
+    #mainHeading, #mainBody{
+        margin: 20px 0 0 0;
+        border-radius: 0;
+    }
+    .leftTitle{
+        display: block;
+        width: 87%;
+    }
+    .leftTitle p{
+        font-size: .9rem;
+    }
+    .rightcancelSign{
+        width: 10%;
+    }
+    #cancelSign{
+        margin: 25px 0 0 10px;
+    }
+    #selectAPlanBtn{
+        margin: 10px 0 0 0;
     }
 }
