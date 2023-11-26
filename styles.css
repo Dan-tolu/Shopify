@@ -370,6 +370,9 @@ nav>a {
     border-radius: 2.8px;
     position: relative;
 }
+.setupContent{
+    display: block;
+}
 
 .progressBar {
     background-color: #000;
@@ -388,7 +391,7 @@ nav>a {
     outline: 0;
 }
 
-.toggleArrows svg {
+.toggleArrows img {
     position: absolute;
     right: 20px;
 }
