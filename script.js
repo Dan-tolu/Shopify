@@ -2,12 +2,15 @@ const notificationBell = document.querySelector('.notifBell');
 const alertMsg = document.querySelector('.alerts');
 const user = document.querySelector('.user');
 const userInfo = document.querySelector('.userDropdown');
+const subPlan = document.querySelector('.subscriptionPlan')
+const cancelPlan = document.querySelector('.cancelPlan')
+const mainToggle = document.querySelector('.toggleArrows')
 
 notificationBell.addEventListener('click', () => {
     if (alertMsg.style.display === 'none') {
-         alertMsg.style.display = 'block'
+    alertMsg.style.display = 'block'
     } else {
-              alertMsg.style.display = 'none'
+        alertMsg.style.display = 'none'
     }
 });
 
@@ -30,68 +33,76 @@ window.addEventListener('click', (event) => {
     }
 });
 
-const collapseBtn = document.querySelector('.collapseIcon')
-const sections = document.querySelectorAll('section')
-const mainBody = document.querySelector('#centerOfMainBody')
-const setupGuild = document.querySelector('#topOfMainBody')
-const leftSection = document.querySelector('#leftOfSection p')
-const bottomSection = document.querySelector('#bottomOfSection')
-const rightSection = document.querySelector('#rightOfSection')
-
-collapseBtn.addEventListener('click', () =>{
-    if(mainBody.style.display == 'block'){
-        mainBody.style.display = 'none'
-        setupGuild.style.height = '110px'
-        collapseBtn.innerHTML = '<img src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg" alt="">'
-    } else{
-        mainBody.style.display = 'block'
-        collapseBtn.innerHTML = '<img src="https://crushingit.tech/hackathon-assets/icon-arrow-up.svg" alt="">'
-        
-    }
-}
-)
+cancelPlan.addEventListener('click', () => {
+    subPlan.style.display = 'none'
+})
 
 
+mainToggle.addEventListener('click', () => {
+    mainToggle.classList.toggle('active')
+})
 
 
+const progressNumber = document.querySelector('.setupProgress span');
+const checkCircles = document.querySelectorAll('.checkCircle');
+const progressBar = document.querySelector('.progressBar')
 
+let numberOfBlueCircles = 0;
 
-// This is the place giving me problems, you can check the code out sha, and also if you can do your's no problem
-// you can comment some of those constants above too
+Array.from(checkCircles).forEach(function (circle) {
+    // Initialize the checked state as a data attribute
+    circle.dataset.checked = '0';
 
-// let currentOpenSection = null;
+    circle.addEventListener('click', (event) => {
+        const theCircle = event.currentTarget;
 
-// Array.from(sections).forEach(function(section){
-//     section.addEventListener('click', (event) => {
-//         const clickedSection = event.currentTarget;
+        // Toggle the checked state using the data attribute
+        if (theCircle.dataset.checked === '0') {
+            theCircle.dataset.checked = '1';
+            console.log(theCircle.dataset.checked);
+            theCircle.style.backgroundColor = 'blue'; // Apply style when checked
+            numberOfBlueCircles++; // Increment the count
+        } else {
+            theCircle.dataset.checked = '0';
+            console.log(theCircle.dataset.checked);
+            theCircle.style.backgroundColor = ''; // Reset style when unchecked
+            numberOfBlueCircles--; // Decrement the count
+        }
 
-//         if (currentOpenSection === clickedSection) {
-//             clickedSection.style.height = '';
-//             clickedSection.style.backgroundColor = '';
-//             clickedSection.innerHTML = clickedSection.getAttribute('data-original-content');
-//             currentOpenSection = null;
-//         } else {
-//             if (currentOpenSection) {
-//                 currentOpenSection.style.height = '';
-//                 currentOpenSection.style.backgroundColor = '';
-//                 currentOpenSection.innerHTML = currentOpenSection.getAttribute('data-original-content');
-//             }
+        console.log(`Number of blue circles: ${numberOfBlueCircles}`);
+    });
 
-//             clickedSection.style.height = '60px';
-//             clickedSection.style.backgroundColor = 'white';
-//             clickedSection.innerHTML = `
-//                 <div class="topOfLeft">
-//                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="33" viewBox="0 0 32 32" fill="none">
-//                         <circle cx="16" cy="16" r="12" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 6" />
-//                     </svg>
-//                     <b>Customize your online store</b>
-//                 </div>
-//             `;
-            
-//             currentOpenSection = clickedSection;
-//         }
-//     });
-// });
+    circle.addEventListener('click',() =>{
+        if(numberOfBlueCircles === 1){
+            progressNumber.innerHTML = `1/5 completed`
+        } else if(numberOfBlueCircles === 2){
+            progressNumber.innerHTML = `2/5 completed`
+        } else if(numberOfBlueCircles === 3){
+            progressNumber.innerHTML = `3/5 completed`
+        } else if(numberOfBlueCircles === 4){
+            progressNumber.innerHTML = `4/5 completed`
+        } else if(numberOfBlueCircles === 5){
+            progressNumber.innerHTML = `5/5 completed`
+        } else{
+            progressNumber.innerHTML = `0/5 completed`
+        }
+    })
+    circle.addEventListener('click', () => {
+        if(progressNumber.innerHTML == `1/5 completed`){
+            progressBar.style.width = `20%`
+        } else if(progressNumber.innerHTML == `2/5 completed`){
+            progressBar.style.width = `40%`
+        } else if(progressNumber.innerHTML == `3/5 completed`){
+            progressBar.style.width = `60%`
+        } else if(progressNumber.innerHTML == `4/5 completed`){
+            progressBar.style.width = `80%`
+        } else if(progressNumber.innerHTML == `5/5 completed`){
+            progressBar.style.width = `100%`
+        } else{
+            progressBar.style.width = `0%`
+        }
+    })
+});
 
 
 
