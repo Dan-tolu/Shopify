@@ -5,6 +5,8 @@ const userInfo = document.querySelector('.userDropdown');
 const subPlan = document.querySelector('.subscriptionPlan')
 const cancelPlan = document.querySelector('.cancelPlan')
 const mainToggle = document.querySelector('.toggleArrows')
+const setupHeads = document.querySelectorAll(".setupHead");
+const setupTexts = document.querySelectorAll('.setupText')
 
 notificationBell.addEventListener('click', () => {
     if (alertMsg.style.display === 'none') {
@@ -41,6 +43,15 @@ cancelPlan.addEventListener('click', () => {
 mainToggle.addEventListener('click', () => {
     mainToggle.classList.toggle('active')
 })
+const contents = document.querySelectorAll('.content')
+Array.from(contents).forEach(function(content){
+    content.addEventListener('click', (event) => {
+        const clickSection = event.currentTarget
+        clickSection.classList.toggle('active')
+        console.log(clickSection.classList);
+    })
+})
+
 
 
 const progressNumber = document.querySelector('.setupProgress span');
@@ -60,12 +71,16 @@ Array.from(checkCircles).forEach(function (circle) {
         if (theCircle.dataset.checked === '0') {
             theCircle.dataset.checked = '1';
             console.log(theCircle.dataset.checked);
-            theCircle.style.backgroundColor = 'blue'; // Apply style when checked
+            theCircle.style.backgroundImage = 'url(https://crushingit.tech/hackathon-assets/icon-checkmark-circle.svg)'
+            theCircle.style.backgroundPosition = 'center'
+            theCircle.style.border = 'none'
             numberOfBlueCircles++; // Increment the count
         } else {
             theCircle.dataset.checked = '0';
             console.log(theCircle.dataset.checked);
-            theCircle.style.backgroundColor = ''; // Reset style when unchecked
+            theCircle.style.backgroundImage = '';
+            theCircle.style.border = ''
+
             numberOfBlueCircles--; // Decrement the count
         }
 
@@ -75,34 +90,26 @@ Array.from(checkCircles).forEach(function (circle) {
     circle.addEventListener('click',() =>{
         if(numberOfBlueCircles === 1){
             progressNumber.innerHTML = `1/5 completed`
+            progressBar.style.width = `20%`
         } else if(numberOfBlueCircles === 2){
             progressNumber.innerHTML = `2/5 completed`
+            progressBar.style.width = `40%`
         } else if(numberOfBlueCircles === 3){
             progressNumber.innerHTML = `3/5 completed`
+            progressBar.style.width = `60%`
+
         } else if(numberOfBlueCircles === 4){
             progressNumber.innerHTML = `4/5 completed`
+            progressBar.style.width = `80%`
+
         } else if(numberOfBlueCircles === 5){
             progressNumber.innerHTML = `5/5 completed`
+            progressBar.style.width = `100%`
+
         } else{
             progressNumber.innerHTML = `0/5 completed`
-        }
-    })
-    circle.addEventListener('click', () => {
-        if(progressNumber.innerHTML == `1/5 completed`){
-            progressBar.style.width = `20%`
-        } else if(progressNumber.innerHTML == `2/5 completed`){
-            progressBar.style.width = `40%`
-        } else if(progressNumber.innerHTML == `3/5 completed`){
-            progressBar.style.width = `60%`
-        } else if(progressNumber.innerHTML == `4/5 completed`){
-            progressBar.style.width = `80%`
-        } else if(progressNumber.innerHTML == `5/5 completed`){
-            progressBar.style.width = `100%`
-        } else{
             progressBar.style.width = `0%`
+
         }
     })
 });
-
-
-
