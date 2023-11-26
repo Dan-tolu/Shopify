@@ -43,14 +43,28 @@ cancelPlan.addEventListener('click', () => {
 mainToggle.addEventListener('click', () => {
     mainToggle.classList.toggle('active')
 })
-const contents = document.querySelectorAll('.content')
-Array.from(contents).forEach(function(content){
-    content.addEventListener('click', (event) => {
-        const clickSection = event.currentTarget
-        clickSection.classList.toggle('active')
-        console.log(clickSection.classList);
-    })
-})
+
+
+const contents = document.querySelectorAll('.content');
+
+Array.from(contents).forEach(function(content) {
+  content.addEventListener('click', (event) => {
+    const clickSection = event.currentTarget;
+
+    // Close all sections
+    Array.from(contents).forEach(function(otherContent) {
+      if (otherContent !== clickSection && otherContent.classList.contains('active')) {
+        otherContent.classList.remove('active');
+      }
+    });
+
+    // Toggle the clicked section
+    clickSection.classList.toggle('active');
+
+    console.log(clickSection.classList);
+  });
+});
+
 
 
 
@@ -113,3 +127,20 @@ Array.from(checkCircles).forEach(function (circle) {
         }
     })
 });
+
+const mainBody = document.querySelector('.setupContent');
+const setupGuild = document.querySelector('.setupContainer');
+const collapseBtn = document.querySelector('.toggleArrows');
+
+collapseBtn.addEventListener('click', () => {
+    const computedStyle = window.getComputedStyle(mainBody);
+
+    if (computedStyle.display === 'block' || computedStyle.display === '') {
+        mainBody.style.display = 'none';
+        collapseBtn.innerHTML = '<img class="arrowDown" src="https://crushingit.tech/hackathon-assets/icon-arrow-up.svg" alt="">';
+    } else {
+        mainBody.style.display = 'block';
+        collapseBtn.innerHTML = '<img class="arrowDown" src="https://crushingit.tech/hackathon-assets/icon-arrow-down.svg" alt="">';
+    }
+});
+
